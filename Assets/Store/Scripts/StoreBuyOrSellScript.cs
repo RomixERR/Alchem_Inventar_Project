@@ -21,8 +21,10 @@ public class StoreBuyOrSellScript : MonoBehaviour
     [Header("Avtoset from StoreitemScript fields")]
     public int BuyCost;
     public int SellCost;
+    public int SiblingIndex;
     public bool NowCanBuy = true;
     public bool NowCanSell = true;
+    public int Amount;
     // Start is called before the first frame update
 
     void Start()
@@ -33,7 +35,9 @@ public class StoreBuyOrSellScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        string B, C;
+        string B, C, C2;
+
+        Amount = StoreMoneyManager.CountOfItem[SiblingIndex];
 
         if (NowCanBuy)
         {
@@ -47,18 +51,20 @@ public class StoreBuyOrSellScript : MonoBehaviour
         }
         if (NowCanSell)
         {
-            C = $"Sell for {SellCost}$";
+            C = $"Sell for {SellCost}$, you have {Amount}";
+            C2 = $"Sell for {SellCost}$";
             LinkedButtonSell.enabled = true;
         }
         else
         {
             C = "Cannot be sold";
+            C2 = C;
             LinkedButtonSell.enabled = false;
         }
 
-
-        LinkedButtonTextBuy.text = B;
-        LinkedButtonTextSell.text = C;
         LinkedTextCost.text = B + System.Environment.NewLine + C;
+        LinkedButtonTextBuy.text = B;
+        LinkedButtonTextSell.text = C2;
+        
     }
 }

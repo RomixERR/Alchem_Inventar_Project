@@ -14,16 +14,22 @@ public class StoreItemScript : MonoBehaviour
     public Color NotAvailableForPurchase;
     public bool CanBuy = true;
     public bool CanSell = true;
+    public int StartAmount;
 
     [Header("Link fields")]
     public Image LinkedImage;
     public Text LinkedTextItemName;
     public Text LinkedTextCost;
+    public Text LinkedTextAmount;
     public GameObject PanelByOrSell;
+    public GameObject StorePanel;
 
     public bool NowCanBuy = true;
     public bool NowCanSell = true;
+    public int SiblingIndex;
     private Image Image;
+    private int Amount;
+    //private StoreMoneyManager moneyManager;
 
     void Start()
     {
@@ -38,6 +44,9 @@ public class StoreItemScript : MonoBehaviour
         if (NowCanBuy) { Image.color = AvailableForPurchase; }
         else { Image.color = NotAvailableForPurchase; }
 
+        Amount = StoreMoneyManager.CountOfItem[SiblingIndex];
+        LinkedTextAmount.text = Amount.ToString();
+
     }
 
     void SetItemAtrributes()
@@ -45,6 +54,8 @@ public class StoreItemScript : MonoBehaviour
         LinkedImage.sprite = Icon;
         LinkedTextItemName.text = NameTitle;
         LinkedTextCost.text = CostIntToString(Cost);
+        SiblingIndex = transform.GetSiblingIndex();
+        StoreMoneyManager.CountOfItem[SiblingIndex] = StartAmount;
     }
 
     string CostIntToString(int cost)
@@ -70,6 +81,7 @@ public class StoreItemScript : MonoBehaviour
             storeBuyOrSellScript.SellCost = CalculateSellCost(Cost);
             storeBuyOrSellScript.NowCanBuy = NowCanBuy;
             storeBuyOrSellScript.NowCanSell = NowCanSell;
+            storeBuyOrSellScript.SiblingIndex = SiblingIndex;
         }
     }
 
