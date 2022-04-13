@@ -18,6 +18,7 @@ public class StoreItemScript : MonoBehaviour
     public Image LinkedImage;
     public Text LinkedTextItemName;
     public Text LinkedTextCost;
+    public GameObject PanelByOrSell;
 
     public bool NowCanBuy = true;
     public bool NowCanSell = true;
@@ -41,13 +42,28 @@ public class StoreItemScript : MonoBehaviour
     {
         LinkedImage.sprite = Icon;
         LinkedTextItemName.text = NameTitle;
-        LinkedTextCost.text = "Cost: " + Cost.ToString() + "$";
+        LinkedTextCost.text = CostIntToString(Cost);
+    }
+
+    string CostIntToString(int cost)
+    {
+        return "Cost: " + cost.ToString() + "$";
     }
 
     public void OnPress()
     {
+        StoreBuyOrSellScript storeBuyOrSellScript;
         if (NowCanBuy) {
-            Debug.Log(NameTitle);
+            PanelByOrSell.SetActive(true);
+            storeBuyOrSellScript = PanelByOrSell.GetComponent<StoreBuyOrSellScript>();
+            storeBuyOrSellScript.LinkedImage.sprite = Icon;
+            storeBuyOrSellScript.LinkedTextCost.text = CostIntToString(Cost);
+            storeBuyOrSellScript.LinkedTextItemName.text = NameTitle;
+
+
+
+
+
         }
     }
 

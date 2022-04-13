@@ -502,12 +502,13 @@ MonoBehaviour:
   Cost: 40
   AvailableForPurchase: {r: 0.6862745, g: 1, b: 0.6901961, a: 0.50980395}
   NotAvailableForPurchase: {r: 1, g: 0.13725491, b: 0.05490196, a: 0.50980395}
-  CanBye: 1
+  CanBuy: 1
   CanSell: 1
   LinkedImage: {fileID: 6590524710129966410}
   LinkedTextItemName: {fileID: 6590524709895857967}
   LinkedTextCost: {fileID: 6590524710731985175}
-  NowCanBye: 1
+  PanelByOrSell: {fileID: 0}
+  NowCanBuy: 1
   NowCanSell: 1
 --- !u!114 &1621592732
 MonoBehaviour:
@@ -555,7 +556,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6590524710907442378}
         m_TargetAssemblyTypeName: StoreItemScript, Assembly-CSharp
-        m_MethodName: dfd
+        m_MethodName: OnPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
