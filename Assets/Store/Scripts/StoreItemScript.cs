@@ -14,6 +14,7 @@ public class StoreItemScript : MonoBehaviour
     public Color NotAvailableForPurchase;
     public bool CanBuy = true;
     public bool CanSell = true;
+
     [Header("Link fields")]
     public Image LinkedImage;
     public Text LinkedTextItemName;
@@ -33,6 +34,7 @@ public class StoreItemScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (NowCanBuy) { Image.color = AvailableForPurchase; }
         else { Image.color = NotAvailableForPurchase; }
 
@@ -50,6 +52,11 @@ public class StoreItemScript : MonoBehaviour
         return "Cost: " + cost.ToString() + "$";
     }
 
+    int CalculateSellCost(int cost)
+    {
+        return cost / 2;
+    }
+
     public void OnPress()
     {
         StoreBuyOrSellScript storeBuyOrSellScript;
@@ -57,13 +64,12 @@ public class StoreItemScript : MonoBehaviour
             PanelByOrSell.SetActive(true);
             storeBuyOrSellScript = PanelByOrSell.GetComponent<StoreBuyOrSellScript>();
             storeBuyOrSellScript.LinkedImage.sprite = Icon;
-            storeBuyOrSellScript.LinkedTextCost.text = CostIntToString(Cost);
+            //storeBuyOrSellScript.LinkedTextCost.text = CostIntToString(Cost);
             storeBuyOrSellScript.LinkedTextItemName.text = NameTitle;
-
-
-
-
-
+            storeBuyOrSellScript.BuyCost = Cost;
+            storeBuyOrSellScript.SellCost = CalculateSellCost(Cost);
+            storeBuyOrSellScript.NowCanBuy = NowCanBuy;
+            storeBuyOrSellScript.NowCanSell = NowCanSell;
         }
     }
 

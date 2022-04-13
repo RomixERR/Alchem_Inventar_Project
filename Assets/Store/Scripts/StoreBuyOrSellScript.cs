@@ -16,10 +16,15 @@ public class StoreBuyOrSellScript : MonoBehaviour
 
     public GameObject ScrollListOfItems;
 
-    private bool NowCanBuy = true;
-    private bool NowCanSell = true;
+    
 
+    [Header("Avtoset from StoreitemScript fields")]
+    public int BuyCost;
+    public int SellCost;
+    public bool NowCanBuy = true;
+    public bool NowCanSell = true;
     // Start is called before the first frame update
+
     void Start()
     {
         
@@ -28,6 +33,32 @@ public class StoreBuyOrSellScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        string B, C;
+
+        if (NowCanBuy)
+        {
+            B = $"Buy for {BuyCost}$";
+            LinkedButtonBuy.enabled = true;
+        }
+        else
+        {
+            B = "Can't be bought";
+            LinkedButtonBuy.enabled = false;
+        }
+        if (NowCanSell)
+        {
+            C = $"Sell for {SellCost}$";
+            LinkedButtonSell.enabled = true;
+        }
+        else
+        {
+            C = "Cannot be sold";
+            LinkedButtonSell.enabled = false;
+        }
+
+
+        LinkedButtonTextBuy.text = B;
+        LinkedButtonTextSell.text = C;
+        LinkedTextCost.text = B + System.Environment.NewLine + C;
     }
 }
