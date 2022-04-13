@@ -12,14 +12,14 @@ public class StoreItemScript : MonoBehaviour
     public int Cost;
     public Color AvailableForPurchase;
     public Color NotAvailableForPurchase;
-    public bool CanBye = true;
+    public bool CanBuy = true;
     public bool CanSell = true;
     [Header("Link fields")]
     public Image LinkedImage;
     public Text LinkedTextItemName;
     public Text LinkedTextCost;
 
-    public bool NowCanBye = true;
+    public bool NowCanBuy = true;
     public bool NowCanSell = true;
     private Image Image;
 
@@ -32,7 +32,7 @@ public class StoreItemScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (NowCanBye) { Image.color = AvailableForPurchase; }
+        if (NowCanBuy) { Image.color = AvailableForPurchase; }
         else { Image.color = NotAvailableForPurchase; }
 
     }
@@ -46,7 +46,7 @@ public class StoreItemScript : MonoBehaviour
 
     public void OnPress()
     {
-        if (NowCanBye) {
+        if (NowCanBuy) {
             Debug.Log(NameTitle);
         }
     }
