@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StoreMoneyManager : MonoBehaviour
 {
+    public Text MoneyText;
+    
     /// <summary>
     /// Количесво денег у игрока
     /// </summary>
@@ -55,7 +58,7 @@ public class StoreMoneyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        MoneyText.text = Money.ToString();
     }
 }
 
