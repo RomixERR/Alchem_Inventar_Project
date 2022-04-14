@@ -44,29 +44,42 @@ public class StoreBuyOrSellScript : MonoBehaviour
 
     private void  OnPressBuyPlus()
     {
-        
+        BuyCount++;
+        if (BuyCount > AmountBuy) BuyCount = AmountBuy;
+
     }
     private void OnPressBuyMinus()
     {
-
+        BuyCount--;
+        if (BuyCount < 0) BuyCount = 0;
     }
     private void OnPressSellPlus()
     {
-
+        SellCount++;
+        if (SellCount > AmountSell) SellCount = AmountSell;
     }
     private void OnPressSellMinus()
     {
-
+        SellCount--;
+        if (SellCount < 0) SellCount = 0;
     }
 
     private void OnPressBuy()
     {
-
+        if (BuyCount > 0)
+        {
+            StoreMoneyManager.Buy(BuyCost, SiblingIndex, BuyCount);
+        }
+        gameObject.SetActive(false);
     }
 
     private void OnPressSell()
     {
-
+        if (SellCount > 0)
+        {
+            StoreMoneyManager.Sell(SellCost, SiblingIndex, SellCount);
+        }
+        gameObject.SetActive(false);
     }
 
     // Start is called before the first frame update
