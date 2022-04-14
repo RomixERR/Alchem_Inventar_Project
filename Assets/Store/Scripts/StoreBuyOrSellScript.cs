@@ -95,7 +95,7 @@ public class StoreBuyOrSellScript : MonoBehaviour
 
     public void Initial()
     {
-        string B, C, C2;
+        string B, C, C2,B2;
 
         Amount = StoreMoneyManager.CountOfItem[SiblingIndex];
 
@@ -103,19 +103,21 @@ public class StoreBuyOrSellScript : MonoBehaviour
         if (NowCanBuy)
         {
             B = $"Buy for {BuyCost}$";
+            B2 = $"Buy for {BuyCost * BuyCount}$";
             LinkedButtonBuy.enabled = true;
             BuyCount = 1;
         }
         else
         {
             B = "Can't be bought";
+            B2 = B;
             LinkedButtonBuy.enabled = false;
             BuyCount = 0;
         }
         if (NowCanSell)
         {
             C = $"Sell for {SellCost}$, you have {Amount}";
-            C2 = $"Sell for {SellCost}$";
+            C2 = $"Sell for {SellCost * SellCount}$";
             LinkedButtonSell.enabled = true;
             SellCount = 1;
         }
@@ -128,7 +130,7 @@ public class StoreBuyOrSellScript : MonoBehaviour
         }
 
         LinkedTextCost.text = B + System.Environment.NewLine + C;
-        LinkedButtonTextBuy.text = B;
+        LinkedButtonTextBuy.text = B2;
         LinkedButtonTextSell.text = C2;
     }
 

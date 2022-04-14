@@ -12,8 +12,10 @@ public class StoreItemScript : MonoBehaviour
     public int Cost;
     public Color AvailableForPurchase;
     public Color NotAvailableForPurchase;
-    public bool CanBuy = true;
-    public bool CanSell = true;
+    public Color NotAvailableForSell;
+    public bool NowCanBuy = true;
+    public bool NowCanSell = true;
+    public bool RariThing = false;
     public int StartAmount;
 
     [Header("Link fields")]
@@ -24,8 +26,7 @@ public class StoreItemScript : MonoBehaviour
     public GameObject PanelByOrSell;
     public GameObject StorePanel;
 
-    public bool NowCanBuy = true;
-    public bool NowCanSell = true;
+
     public int SiblingIndex;
     private Image Image;
     private int Amount;
@@ -34,33 +35,63 @@ public class StoreItemScript : MonoBehaviour
     void Start()
     {
         Image = GetComponent<Image>();
-        SetItemAtrributes();
+        LinkedImage.sprite = Icon;
+        SiblingIndex = transform.GetSiblingIndex();
+        StoreMoneyManager.CountOfItem[SiblingIndex] = StartAmount;
+        LinkedTextItemName.text = NameTitle;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        if (NowCanBuy) { Image.color = AvailableForPurchase; }
-        else { Image.color = NotAvailableForPurchase; }
+        if (RariThing)
+        {
+            if (StoreMoneyManager.Money< RarityBuyMoney())
+            {
+                NowCanBuy = false;
+            }
+            else
+            {
+                NowCanBuy = true;
+            }
+        }
+
+
+        if (NowCanBuy)
+        {
+            if (NowCanSell)
+            {
+                Image.color = AvailableForPurchase;
+            }
+            else { Image.color = NotAvailableForSell; }
+            
+        }
+        else
+        {
+            Image.color = NotAvailableForPurchase;
+        }
 
         Amount = StoreMoneyManager.CountOfItem[SiblingIndex];
         LinkedTextAmount.text = Amount.ToString();
-
+        LinkedTextCost.text = CostIntToString();
     }
 
-    void SetItemAtrributes()
+    int RarityBuyMoney()
     {
-        LinkedImage.sprite = Icon;
-        LinkedTextItemName.text = NameTitle;
-        LinkedTextCost.text = CostIntToString(Cost);
-        SiblingIndex = transform.GetSiblingIndex();
-        StoreMoneyManager.CountOfItem[SiblingIndex] = StartAmount;
+        return StoreMoneyManager.StartMoneyAmountStatic * 2;
     }
 
-    string CostIntToString(int cost)
+
+
+    string CostIntToString()
     {
-        return "Cost: " + cost.ToString() + "$";
+        string S;
+        if (!RariThing) {
+           S = $"Cost: {Cost}$";
+        } else {
+           S = $"Cost: {Cost}$ Need > {RarityBuyMoney()}";
+        }
+        return S;
     }
 
 
