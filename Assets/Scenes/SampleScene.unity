@@ -660,7 +660,7 @@ PrefabInstance:
       objectReference: {fileID: 1167705888}
     - target: {fileID: 5372520188524506259, guid: ac1804f81631daf40ba34ff644f7fe86, type: 3}
       propertyPath: StartAmount
-      value: 15
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5372520188524506259, guid: ac1804f81631daf40ba34ff644f7fe86, type: 3}
       propertyPath: PanelByOrSell
@@ -4828,6 +4828,10 @@ PrefabInstance:
       propertyPath: StorePanel
       value: 
       objectReference: {fileID: 1167705888}
+    - target: {fileID: 5372520188524506259, guid: ac1804f81631daf40ba34ff644f7fe86, type: 3}
+      propertyPath: StartAmount
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5372520188524506259, guid: ac1804f81631daf40ba34ff644f7fe86, type: 3}
       propertyPath: PanelByOrSell
       value: 
