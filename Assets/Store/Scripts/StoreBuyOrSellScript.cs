@@ -35,9 +35,8 @@ public class StoreBuyOrSellScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        NowCanBuy = StoreMoneyManager.CanYouBuy(BuyCost);
-        NowCanSell = StoreMoneyManager.CanYouSell(SiblingIndex);
-
+        if (StoreMoneyManager.CanYouBuy(BuyCost) > 0) NowCanBuy = true; else NowCanBuy = false;
+        if (StoreMoneyManager.CanYouSell(SiblingIndex) > 0) NowCanSell = true; else NowCanSell = false;
 
         string B, C, C2;
 

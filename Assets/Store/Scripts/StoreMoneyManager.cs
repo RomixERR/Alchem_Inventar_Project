@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class StoreMoneyManager : MonoBehaviour
 {
+    public int MaxAmountWillBuy = 100;
+    public static int MaxAmountWillBuyStatic;
     public Text MoneyText;
     
     /// <summary>
@@ -21,15 +23,32 @@ public class StoreMoneyManager : MonoBehaviour
         return cost / 2;
     }
 
-    public static bool CanYouBuy(int cost)
+    //public static bool CanYouBuy(int cost)
+    //{
+    //    if (cost <= Money) {
+    //        return true;
+    //    } else { return false; }
+    //}
+
+    //public static bool CanYouSell(int ItemIndex)
+    //{
+    //    if (CountOfItem[ItemIndex] > 0) {
+    //        return true;
+    //    } else { return false; }
+    //}
+
+    public static int CanYouBuy(int cost)
     {
-        if (cost <= Money) return true; else return false;
+        int amount=0;
+        if (cost > 0) { amount = Money / cost; } else { amount = MaxAmountWillBuyStatic;}
+        return amount;
     }
 
-    public static bool CanYouSell(int ItemIndex)
+    public static int CanYouSell(int ItemIndex)
     {
-        if (CountOfItem[ItemIndex] > 0) return true; else return false;
+        return CountOfItem[ItemIndex];
     }
+
 
     public static void Buy(int BuyCost, int ItemIndex, int amount=1)
     {
@@ -56,7 +75,7 @@ public class StoreMoneyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        MaxAmountWillBuyStatic = MaxAmountWillBuy;
     }
 
     // Update is called once per frame
