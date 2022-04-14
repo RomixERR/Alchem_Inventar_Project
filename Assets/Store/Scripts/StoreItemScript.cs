@@ -63,10 +63,7 @@ public class StoreItemScript : MonoBehaviour
         return "Cost: " + cost.ToString() + "$";
     }
 
-    int CalculateSellCost(int cost)
-    {
-        return cost / 2;
-    }
+
 
     public void OnPress()
     {
@@ -78,7 +75,7 @@ public class StoreItemScript : MonoBehaviour
             //storeBuyOrSellScript.LinkedTextCost.text = CostIntToString(Cost);
             storeBuyOrSellScript.LinkedTextItemName.text = NameTitle;
             storeBuyOrSellScript.BuyCost = Cost;
-            storeBuyOrSellScript.SellCost = CalculateSellCost(Cost);
+            storeBuyOrSellScript.SellCost = StoreMoneyManager.CalculateSellCost(Cost);
             storeBuyOrSellScript.NowCanBuy = NowCanBuy;
             storeBuyOrSellScript.NowCanSell = NowCanSell;
             storeBuyOrSellScript.SiblingIndex = SiblingIndex;

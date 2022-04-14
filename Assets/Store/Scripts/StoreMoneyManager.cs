@@ -14,20 +14,24 @@ public class StoreMoneyManager : MonoBehaviour
     /// <summary>
     /// Кол-во предметов у игрока
     /// </summary>
-    public static int[] CountOfItem = new int[8]; 
+    public static int[] CountOfItem = new int[8];
 
+    public static int  CalculateSellCost(int cost)
+    {
+        return cost / 2;
+    }
 
-    public bool CanYouBuy(int cost)
+    public static bool CanYouBuy(int cost)
     {
         if (cost <= Money) return true; else return false;
     }
 
-    public bool CanYouSell(int ItemIndex)
+    public static bool CanYouSell(int ItemIndex)
     {
         if (CountOfItem[ItemIndex] > 0) return true; else return false;
     }
 
-    public void Buy(int BuyCost, int ItemIndex, int amount=1)
+    public static void Buy(int BuyCost, int ItemIndex, int amount=1)
     {
         if ((BuyCost * amount) <= Money)
         {
@@ -36,7 +40,7 @@ public class StoreMoneyManager : MonoBehaviour
         }
     }
 
-    public void Sell(int SellCost, int ItemIndex, int amount = 1)
+    public static void Sell(int SellCost, int ItemIndex, int amount = 1)
     {
         if (CountOfItem[ItemIndex]>= amount)
         {
