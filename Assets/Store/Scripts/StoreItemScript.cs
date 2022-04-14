@@ -76,9 +76,13 @@ public class StoreItemScript : MonoBehaviour
             storeBuyOrSellScript.LinkedTextItemName.text = NameTitle;
             storeBuyOrSellScript.BuyCost = Cost;
             storeBuyOrSellScript.SellCost = StoreMoneyManager.CalculateSellCost(Cost);
-            storeBuyOrSellScript.NowCanBuy = NowCanBuy;
-            storeBuyOrSellScript.NowCanSell = NowCanSell;
+            //storeBuyOrSellScript.NowCanBuy = NowCanBuy;
+            //storeBuyOrSellScript.NowCanSell = NowCanSell;
             storeBuyOrSellScript.SiblingIndex = SiblingIndex;
+            if (StoreMoneyManager.CanYouBuy(Cost) > 0) storeBuyOrSellScript.NowCanBuy = true; else storeBuyOrSellScript.NowCanBuy = false;
+            if ((StoreMoneyManager.CanYouSell(SiblingIndex) > 0)&&(NowCanSell)) storeBuyOrSellScript.NowCanSell = true; else storeBuyOrSellScript.NowCanSell = false;
+            storeBuyOrSellScript.AmountBuy = StoreMoneyManager.CanYouBuy(Cost);
+            storeBuyOrSellScript.AmountSell = StoreMoneyManager.CanYouSell(SiblingIndex);
         }
     }
 

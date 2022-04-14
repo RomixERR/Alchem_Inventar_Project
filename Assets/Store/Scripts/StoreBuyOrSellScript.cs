@@ -14,7 +14,17 @@ public class StoreBuyOrSellScript : MonoBehaviour
     public Button LinkedButtonBuy;
     public Button LinkedButtonSell;
 
+    public Button LinkedButtonBuyPlus;
+    public Text LinkedTextBuyAmount;
+    public Button LinkedButtonBuyMinus;
+
+    public Button LinkedButtonSellPlus;
+    public Text LinkedTextSellAmount;
+    public Button LinkedButtonSellMinus;
+
+
     public GameObject ScrollListOfItems;
+
 
     
 
@@ -25,6 +35,13 @@ public class StoreBuyOrSellScript : MonoBehaviour
     public bool NowCanBuy = true;
     public bool NowCanSell = true;
     public int Amount;
+
+    public int AmountSell;
+    public int AmountBuy;
+
+    //private int AmountSell; LinkedTextBuyAmount
+    //private int AmountBuy;
+
     // Start is called before the first frame update
 
     void Start()
@@ -32,11 +49,11 @@ public class StoreBuyOrSellScript : MonoBehaviour
         
     }
 
+  
     // Update is called once per frame
     void Update()
     {
-        if (StoreMoneyManager.CanYouBuy(BuyCost) > 0) NowCanBuy = true; else NowCanBuy = false;
-        if (StoreMoneyManager.CanYouSell(SiblingIndex) > 0) NowCanSell = true; else NowCanSell = false;
+        
 
         string B, C, C2;
 

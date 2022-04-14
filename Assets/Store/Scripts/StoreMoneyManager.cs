@@ -6,7 +6,10 @@ using UnityEngine.UI;
 public class StoreMoneyManager : MonoBehaviour
 {
     public int MaxAmountWillBuy = 100;
+    public int StartMoneyAmount = 5000;
+
     public static int MaxAmountWillBuyStatic;
+    public static int StartMoneyAmountStatic;
     public Text MoneyText;
     
     /// <summary>
@@ -76,6 +79,8 @@ public class StoreMoneyManager : MonoBehaviour
     void Start()
     {
         MaxAmountWillBuyStatic = MaxAmountWillBuy;
+        StartMoneyAmountStatic = StartMoneyAmount;
+        Money = StartMoneyAmountStatic;
     }
 
     // Update is called once per frame
