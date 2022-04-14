@@ -83,6 +83,7 @@ public class StoreItemScript : MonoBehaviour
             if ((StoreMoneyManager.CanYouSell(SiblingIndex) > 0)&&(NowCanSell)) storeBuyOrSellScript.NowCanSell = true; else storeBuyOrSellScript.NowCanSell = false;
             storeBuyOrSellScript.AmountBuy = StoreMoneyManager.CanYouBuy(Cost);
             storeBuyOrSellScript.AmountSell = StoreMoneyManager.CanYouSell(SiblingIndex);
+            storeBuyOrSellScript.Initial();
         }
     }
 
